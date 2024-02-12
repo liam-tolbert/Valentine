@@ -28,8 +28,7 @@ function isOnEdge(x, y, offsetx, offsety){
   const screenHeight = window.innerHeight;
   console.log("Hello");
   // on x edge or y edge (and I think or both) it will return true
-  return (0 <= x && x >= offsetx) || (screenWidth - offsetx <= x && x >= screenWidth) ||
-    (0 <= y && y >= offsety) || (screenHeight - offsety <= y && y >= screenHeight);
+  return x <= offsetx || x + offsetx >= screenWidth - offsetx || y <= offsety || y + offsety >= screenHeight - offsety;
 }
 
 document.getElementById('noButton').addEventListener('click', function () {
@@ -63,7 +62,7 @@ document.getElementById('noButton').addEventListener('click', function () {
       randomX = Math.random() * screenWidth;
       randomY = Math.random() * screenHeight;
     }
-    
+    console.log("Bye");
     noButton.style.position = 'absolute';
     noButton.style.left = `${randomX}px`;
     noButton.style.top = `${randomY}px`;
