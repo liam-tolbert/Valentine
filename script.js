@@ -1,8 +1,8 @@
 // script.js
 
 let timesClicked = 0;
-const pleas = ["Please don't say no :)",
-  "Why did you click No? You were supposed to click Yes...",
+const pleas = ["Please don't click No again :)",
+  "Why did you click No again? You were supposed to click Yes...",
   "If you press Yes, I'll be as happy as a kid in a candy store. Clicking No would be like taking candy from that kid... Please don't take my candy.",
   "Come onnnnnn.... stop clicking no already!",
   "Come on...click yes for me! Don't you love me?",
@@ -26,7 +26,6 @@ const pleas = ["Please don't say no :)",
 function isOnEdge(x, y, offsetx, offsety){
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
-  console.log("Hello");
   // on x edge or y edge (and I think or both) it will return true
   return x <= offsetx || x + offsetx >= screenWidth - offsetx || y <= offsety || y + offsety >= screenHeight - offsety;
 }
@@ -42,27 +41,25 @@ document.getElementById('noButton').addEventListener('click', function () {
   timesClicked++;
 
   // Increase the size of the Yes button
-  yesButton.style.fontSize = `${parseFloat(yesButtonSize) + 5}px`;
+  yesButton.style.fontSize = `${parseFloat(yesButtonSize) + 10}px`;
 
   // Decrease the size of the No button
-  noButtonSize = parseFloat(noButtonSize) - 5;
+  noButtonSize = parseFloat(noButtonSize) - 10;
   noButton.style.fontSize = `${Math.max(noButtonSize, 1)}px`;
 
   // Change what the message says
   plea.textContent = pleas[Math.min(timesClicked, pleas.length) - 1];
 
-  // Randomize button positions after the 11th message
-  if (timesClicked >= 11) {
+  // Randomize button positions after the 12th message
+  if (timesClicked >= 12) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     var randomX = Math.random() * screenWidth;
     var randomY = Math.random() * screenHeight;
-    while (!isOnEdge(randomX, randomY, noButton.wid, noButton.offsetHeight)){
-      console.log("dsgsdlk");
+    while (!isOnEdge(randomX, randomY, noButton.width, noButton.offsetHeight)){
       randomX = Math.random() * screenWidth;
       randomY = Math.random() * screenHeight;
     }
-    console.log("Bye");
     noButton.style.position = 'absolute';
     noButton.style.left = `${randomX}px`;
     noButton.style.top = `${randomY}px`;

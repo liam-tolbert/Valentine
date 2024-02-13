@@ -1,18 +1,49 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.page-heading{
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: 150px;
+  font-style: normal;
+}
+
+.button-container {
+  justify-content: center;
+}
+
+#plea {
+  margin-bottom: 200px; 
+}
+
 button {
-    padding: 10px 20px;
-    font-size: 70px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-  }
-  
-  #yesButton {
-    background-color: green;
-    color: white;
-  }
-  
-  #noButton {
-    background-color: red;
-    color: white;
-  }
-  
+  margin: 0 30px;
+  padding: 10px 20px;
+  font-size: 100px;
+  border: none;
+  border-radius: 10px;
+}
+
+#yesButton {
+  background-color: #26a326;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  cursor: url('heart.png'), auto;
+}
+
+#noButton {
+  background-color: red;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  cursor: url('break.png'), not-allowed;
+}
