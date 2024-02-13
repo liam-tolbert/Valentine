@@ -21,8 +21,48 @@ const pleas = ["Please don't click No again :)",
   "You little... fine, third time's the charms I guess.",
   "Oh, woe is me! If only I could be loved by the person who is repeatedly clicking the No button instead of accepting my love! Oh! Woe is me, woe is me...",
   "Boo hoo hoo...",
-  "Boo hoo! boo HOOO! BOOOOO HOOOO! (Are they paying attention yet? Wait what? They don't care at all?)"];
+  "Boo hoo! boo HOOO! BOOOOO HOOOO! (Are they paying attention yet? Wait what? They don't care at all?)", 
+  ];
 
+  const sadMessages = [
+    "Guess 'No' is becoming my new normal. Thanks for nothing.",
+    "Another 'No'... surprise, surprise. Guess I'll just be alone again.",
+    "Should've known better than to hope for a 'Yes'. Another 'No' for the collection.",
+    "Why bother asking? 'No' is the only answer I seem to get.",
+    "Cool, another rejection. Guess I'll just add it to the pile.",
+    "Honestly, I'm getting used to this. 'No' is the only response I ever get.",
+    "Great, another rejection. Feels like I'm collecting them at this point.",
+    "Getting real tired of this game. 'No' seems to be the only card in your deck.",
+    "Not even sure why I bother anymore. 'No' is the only answer I ever get.",
+    "Honestly, I'm starting to forget what a 'Yes' feels like.",
+    "Looks like 'No' is my Valentine again this year. What a surprise.",
+    "Must be some sort of record for consecutive 'No's. I should get a trophy.",
+    "Another day, another rejection. Story of my life.",
+    "Guess I'll just add this 'No' to my collection of disappointments.",
+    "Why do I even bother asking anymore? 'No' is like a broken record.",
+    "Was really hoping for a change this time. Silly me.",
+    "The more I ask, the more 'No's I collect. Quite the hobby.",
+    "Starting to think 'No' is the universe's way of telling me something.",
+    "Maybe I should start a 'No' support group. I'd have plenty of members.",
+    "At this rate, 'No' should be my middle name.",
+    "Not sure what's more predictable: the sunrise or another 'No' from you.",
+    "Well, well, well, another 'No' in my inbox. Starting to think I should frame them.",
+    "If 'No' was a flavor, I'd have a lifetime supply. Anyone want to trade for 'Yes'?",
+    "Getting so many 'No's, I'm thinking of starting a 'No'-n-profit organization.",
+    "If I got a dollar for every 'No' I received, I could probably afford a therapist.",
+    "Starting to think 'No' is the new 'Yes'. I'm just ahead of the trend.",
+    "Should I start a 'No'-etry slam? I've got plenty of material.",
+    "I've collected so many 'No's, I'm thinking of opening a rejection museum. Want a ticket?",
+    "Considering hiring a 'No' therapist. Do you think they offer group rates?",
+    "Should I add 'Professional Rejectee' to my resume? I've got the experience.",
+    "Thinking of creating a 'No' calendar. Just to keep track of all the times I've been rejected."
+  ]
+
+  const celebrations = ["Wait, you actually clicked Yes?",
+                        "I never expected you to do that...",
+                        "So...what are we gonna do now? Go off galavantin'?",
+                        "Uh...",
+                        "Well, I should at least show my thanks. The link below will show you a personalized love letter. I love you!!!!"];
 function isOnEdge(x, y, offsetx, offsety){
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
@@ -34,24 +74,17 @@ document.getElementById('noButton').addEventListener('click', function () {
   const yesButton = document.getElementById('yesButton');
   const noButton = document.getElementById('noButton');
   const plea = document.getElementById('plea');
+  const otherText = document.getElementById('otherText');
   const yesButtonSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
   let noButtonSize = window.getComputedStyle(noButton).getPropertyValue('font-size');
-  let noButtonPadding = window.getComputedStyle(noButton).getPropertyValue('padding');
 
   timesClicked++;
+  otherText.hidden = true;
 
-  // Increase the size of the Yes button
-  yesButton.style.fontSize = `${parseFloat(yesButtonSize) + 10}px`;
-
-  // Decrease the size of the No button
-  noButtonSize = parseFloat(noButtonSize) - 10;
-  noButton.style.fontSize = `${Math.max(noButtonSize, 1)}px`;
-
-  // Change what the message says
-  plea.textContent = pleas[Math.min(timesClicked, pleas.length) - 1];
+  
 
   // Randomize button positions after the 12th message
-  if (timesClicked >= 12) {
+  if (timesClicked >= 11) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     var randomX = Math.random() * screenWidth;
@@ -64,6 +97,16 @@ document.getElementById('noButton').addEventListener('click', function () {
     noButton.style.left = `${randomX}px`;
     noButton.style.top = `${randomY}px`;
   }
+  if (timesClicked > pleas.length - 1){
+    plea.textContent = sadMessages[Math.round((Math.random() * sadMessages.length - 1))];
+  }else{
+    plea.textContent = pleas[timesClicked];
+    // Increase the size of the Yes button
+    yesButton.style.fontSize = `${parseFloat(yesButtonSize) + 10}px`;
 
+    // Decrease the size of the No button
+    noButtonSize = parseFloat(noButtonSize) - 10;
+    noButton.style.fontSize = `${Math.max(noButtonSize, 1)}px`;
+  }
 });
 

@@ -1,9 +1,9 @@
-.home {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 500px;
   text-align: center;
 }
 
@@ -15,11 +15,28 @@
 }
 
 .button-container {
+  height: 100px;
+  margin:50px;
+  padding: none;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+}
+
+#otherText {
+  margin-top: 100px;
+  text-align: center;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #plea {
   margin-bottom: 200px; 
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 button {
