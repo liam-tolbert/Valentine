@@ -45,6 +45,9 @@ button {
   font-size: 100px;
   border: none;
   border-radius: 10px;
+  box-shadow: 0 9px #999;
+  text-align: center;
+
 }
 
 #yesButton {
@@ -56,6 +59,14 @@ button {
   cursor: url('heart.png'), auto;
 }
 
+#yesButton:hover {background-color: #3e8e41}
+
+#yesButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 #noButton {
   background-color: red;
   font-family: "Crimson Text", serif;
@@ -63,4 +74,12 @@ button {
   font-style: normal;
   color: white;
   cursor: url('break.png'), not-allowed;
+}
+
+#noButton:hover {background-color: #721a1a}
+
+#noButton:active {
+  background-color: #721a1a;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

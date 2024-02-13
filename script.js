@@ -1,6 +1,7 @@
 // script.js
 
-let timesClicked = 0;
+let timesNoClicked = 0;
+let timesYesClicked = 0;
 const pleas = ["Please don't click No again :)",
   "Why did you click No again? You were supposed to click Yes...",
   "If you press Yes, I'll be as happy as a kid in a candy store. Clicking No would be like taking candy from that kid... Please don't take my candy.",
@@ -59,9 +60,9 @@ const pleas = ["Please don't click No again :)",
   ]
 
   const celebrations = ["Wait, you actually clicked Yes?",
-                        "I never expected you to do that...",
+                        "I never expected you to do that...did you really mean to?",
                         "So...what are we gonna do now? Go off galavantin'?",
-                        "Uh...",
+                        "Uh... so you're actually my Valentine now? Um...",
                         "Well, I should at least show my thanks. The link below will show you a personalized love letter. I love you!!!!"];
 function isOnEdge(x, y, offsetx, offsety){
   const screenWidth = window.innerWidth;
@@ -69,6 +70,25 @@ function isOnEdge(x, y, offsetx, offsety){
   // on x edge or y edge (and I think or both) it will return true
   return x <= offsetx || x + offsetx >= screenWidth - offsetx || y <= offsety || y + offsety >= screenHeight - offsety;
 }
+
+document.getElementById('yesButton').addEventListener('click', function () {
+  const yesButton = document.getElementById('yesButton');
+  const noButton = document.getElementById('noButton');
+  const plea = document.getElementById('plea');
+  const otherText = document.getElementById('otherText');
+  timesYesClicked++;
+  noButton.hidden = true;
+  console.log("gfdgs");
+  plea.textContent = celebrations[Math.min(timesYesClicked, celebrations.length) - 1];
+  if (timesYesClicked >= celebrations.length){
+    const link = document.createElement('a');
+    link.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    link.textContent = 'My love letter to you <3';
+    otherText.innerHTML = '';
+    otherText.appendChild(link);
+    otherText.hidden = false;
+  }
+});
 
 document.getElementById('noButton').addEventListener('click', function () {
   const yesButton = document.getElementById('yesButton');
@@ -78,13 +98,11 @@ document.getElementById('noButton').addEventListener('click', function () {
   const yesButtonSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
   let noButtonSize = window.getComputedStyle(noButton).getPropertyValue('font-size');
 
-  timesClicked++;
+  timesNoClicked++;
   otherText.hidden = true;
 
-  
-
   // Randomize button positions after the 12th message
-  if (timesClicked >= 11) {
+  if (timesNoClicked >= 11) {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     var randomX = Math.random() * screenWidth;
@@ -97,10 +115,10 @@ document.getElementById('noButton').addEventListener('click', function () {
     noButton.style.left = `${randomX}px`;
     noButton.style.top = `${randomY}px`;
   }
-  if (timesClicked > pleas.length - 1){
+  if (timesNoClicked > pleas.length - 1){
     plea.textContent = sadMessages[Math.round((Math.random() * sadMessages.length - 1))];
   }else{
-    plea.textContent = pleas[timesClicked];
+    plea.textContent = pleas[timesNoClicked];
     // Increase the size of the Yes button
     yesButton.style.fontSize = `${parseFloat(yesButtonSize) + 10}px`;
 
