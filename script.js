@@ -2,6 +2,8 @@
 
 let timesNoClicked = 0;
 let timesYesClicked = 0;
+
+
 const pleas = ["Please don't click No again :)",
   "Why did you click No again? You were supposed to click Yes...",
   "If you press Yes, I'll be as happy as a kid in a candy store. Clicking No would be like taking candy from that kid... Please don't take my candy.",
@@ -71,22 +73,24 @@ function isOnEdge(x, y, offsetx, offsety){
   return x <= offsetx || x + offsetx >= screenWidth - offsetx || y <= offsety || y + offsety >= screenHeight - offsety;
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("linkButton").hidden = true;
+});
+
 document.getElementById('yesButton').addEventListener('click', function () {
   const yesButton = document.getElementById('yesButton');
   const noButton = document.getElementById('noButton');
   const plea = document.getElementById('plea');
   const otherText = document.getElementById('otherText');
+  const linkButton = document.getElementById('linkButton');
   timesYesClicked++;
+  otherText.hidden = true;
   noButton.hidden = true;
   console.log("gfdgs");
   plea.textContent = celebrations[Math.min(timesYesClicked, celebrations.length) - 1];
   if (timesYesClicked >= celebrations.length){
-    const link = document.createElement('a');
-    link.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    link.textContent = 'My love letter to you <3';
-    otherText.innerHTML = '';
-    otherText.appendChild(link);
-    otherText.hidden = false;
+    yesButton.hidden = true;
+    linkButton.hidden = false;
   }
 });
 
@@ -127,4 +131,3 @@ document.getElementById('noButton').addEventListener('click', function () {
     noButton.style.fontSize = `${Math.max(noButtonSize, 1)}px`;
   }
 });
-
