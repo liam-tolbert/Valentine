@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  text-align: center;
+}
+
+.page-heading{
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: 150px;
+  font-style: normal;
+}
+
+.button-container {
+  height: 100px;
+  margin:50px;
+  padding: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#otherText {
+  margin-top: 100px;
+  text-align: center;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#plea {
+  margin-bottom: 200px; 
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button {
+  margin: 0 30px;
+  padding: 10px 20px;
+  font-size: 100px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+  text-align: center;
+
+}
+
+#yesButton {
+  background-color: #26a326;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  cursor: url('heart.png'), auto;
+}
+
+#yesButton:hover {background-color: #3e8e41}
+
+#yesButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#noButton {
+  background-color: red;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  cursor: url('break.png'), not-allowed;
+}
+
+#noButton:hover {background-color: #721a1a}
+
+#noButton:active {
+  background-color: #721a1a;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
